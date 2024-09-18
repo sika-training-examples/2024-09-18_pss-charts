@@ -7,4 +7,4 @@ spec:
     - port: {{ required ".Values.port" .Values.port }}
       targetPort: {{ .Values.containerPort }}
   selector:
-    release: {{ .Release.Name }}
+    app: {{ .Release.Name }}

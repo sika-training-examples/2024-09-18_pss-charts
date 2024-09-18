@@ -3,17 +3,17 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}
   labels:
-    release: {{ .Release.Name }}
+    app: {{ .Release.Name }}
 spec:
   replicas: {{ .Values.replicas }}
   revisionHistoryLimit: 0
   selector:
     matchLabels:
-      release: {{ .Release.Name }}
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        release: {{ .Release.Name }}
+        app: {{ .Release.Name }}
     spec:
       containers:
         - name: main

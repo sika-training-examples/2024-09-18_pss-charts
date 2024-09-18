@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "name" . }}
+  name: {{ .Release.Name }}
   labels:
-    release: {{ include "name" . }}
+    release: {{ .Release.Name }}
 spec:
   replicas: {{ .Values.replicas }}
   revisionHistoryLimit: 0
   selector:
     matchLabels:
-      release: {{ include "name" . }}
+      release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        release: {{ include "name" . }}
+        release: {{ .Release.Name }}
     spec:
       containers:
         - name: main

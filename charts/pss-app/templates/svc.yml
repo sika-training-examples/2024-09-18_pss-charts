@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "name" . }}
+  name: {{ .Release.Name }}
 spec:
   ports:
     - port: {{ required ".Values.port" .Values.port }}
       targetPort: {{ .Values.containerPort }}
   selector:
-    release: {{ include "name" . }}
+    release: {{ .Release.Name }}

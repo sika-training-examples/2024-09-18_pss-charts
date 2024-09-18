@@ -11,3 +11,7 @@ replicas: 1
 env: {}
 clusterIssuer: letsencrypt
 ingressClassName: nginx
+
+vaultAuthRef:
+vaultSecretMount:
+vaultSecretPath:

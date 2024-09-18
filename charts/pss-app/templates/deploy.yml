@@ -27,3 +27,8 @@ spec:
               value: {{ $v | quote }}
           {{- end }}
           {{- end }}
+          {{ if .Values.vaultAuthRef }}
+          envFrom:
+            - secretRef:
+                name: {{ .Release.Name }}-env
+          {{- end }}

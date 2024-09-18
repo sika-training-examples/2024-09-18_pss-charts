@@ -1,0 +1,13 @@
+# Required
+image:
+containerPort:
+port:
+
+# Optional
+host:
+replicas: 1
+# env:
+#   ENV_VAR: value
+env: {}
+clusterIssuer: letsencrypt
+ingressClassName: nginx

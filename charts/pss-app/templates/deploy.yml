@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "name" . }}
+  labels:
+    release: {{ include "name" . }}
+spec:
+  replicas: {{ .Values.replicas }}
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      release: {{ include "name" . }}
+  template:
+    metadata:
+      labels:
+        release: {{ include "name" . }}
+    spec:
+      containers:
+        - name: main
+          image: {{ required ".Values.image is required" .Values.image }}
+          ports:
+            - containerPort: {{ required ".Values.containerPort is required" .Values.containerPort }}
+          {{ if .Values.env }}
+          env:
+          {{- range $k, $v := .Values.env }}
+            - name: {{ $k }}
+              value: {{ $v | quote }}
+          {{- end }}
+          {{- end }}

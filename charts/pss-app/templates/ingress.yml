@@ -7,10 +7,12 @@ metadata:
     cert-manager.io/cluster-issuer: {{ .Values.clusterIssuer }}
 spec:
   ingressClassName: {{ .Values.ingressClassName }}
+  {{ if .Values.tls }}
   tls:
     - hosts:
         - {{ .Values.host }}
       secretName: {{ .Release.Name }}-tls
+  {{ end }}
   rules:
     - host: {{ .Values.host }}
       http:

@@ -5,6 +5,9 @@ metadata:
   name: {{ .Release.Name }}
   annotations:
     cert-manager.io/cluster-issuer: {{ .Values.clusterIssuer }}
+    {{ if .Values.rewriteTarget }}
+    nginx.ingress.kubernetes.io/rewrite-target: "/$2"
+    {{ end }}
 spec:
   ingressClassName: {{ .Values.ingressClassName }}
   {{ if .Values.tls }}
@@ -17,7 +20,7 @@ spec:
     - host: {{ .Values.host }}
       http:
         paths:
-          - path: {{ .Values.path }}
+          - path: {{ .Values.path }}{{- if .Values.rewriteTarget }}(/|$)(.*){{- end }}
             pathType: Prefix
             backend:
               service:

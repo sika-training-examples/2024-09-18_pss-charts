@@ -5,6 +5,7 @@ port:
 
 # Optional
 host:
+path: /
 replicas: 1
 # env:
 #   ENV_VAR: value

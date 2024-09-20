@@ -52,4 +52,7 @@ spec:
             - name: MONGODB_REPLICA_SET_KEY
               value: replicasetkey
             - name: MONGODB_PRIMARY_ROOT_PASSWORD
-              value: root
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-root-password
+                  key: MONGODB_ROOT_PASSWORD

@@ -1,0 +1,3 @@
+# Optional
+image: bitnami/mongodb
+storage: 1Gi

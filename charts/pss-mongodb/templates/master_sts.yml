@@ -44,7 +44,7 @@ spec:
             - name: MONGODB_REPLICA_SET_MODE
               value: primary
             - name: MONGODB_ADVERTISED_HOSTNAME
-              value: {{ .Release.Name }}-master
+              value: {{ .Release.Name }}-master.{{ .Release.Namespace }}
             - name: MONGODB_REPLICA_SET_KEY
               value: replicasetkey
             - name: MONGODB_ROOT_PASSWORD

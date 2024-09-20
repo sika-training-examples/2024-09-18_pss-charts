@@ -44,9 +44,9 @@ spec:
             - name: MONGODB_REPLICA_SET_MODE
               value: arbiter
             - name: MONGODB_ADVERTISED_HOSTNAME
-              value: {{ .Release.Name }}-arbiter
+              value: {{ .Release.Name }}-arbiter.{{ .Release.Namespace }}
             - name: MONGODB_PRIMARY_HOST
-              value: {{ .Release.Name }}-master
+              value: {{ .Release.Name }}-master.{{ .Release.Namespace }}
             - name: MONGODB_PRIMARY_PORT_NUMBER
               value: "27017"
             - name: MONGODB_REPLICA_SET_KEY
